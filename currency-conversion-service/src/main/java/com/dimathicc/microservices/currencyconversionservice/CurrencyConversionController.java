@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/currency-conversion")
 public class CurrencyConversionController {
 
     private final CurrencyExchangeProxy proxy;
@@ -20,7 +19,7 @@ public class CurrencyConversionController {
         this.proxy = proxy;
     }
 
-    @GetMapping("/from/{from}/to/{to}/quantity/{quantity}")
+    @GetMapping("/currency-conversion/from/{from}/to/{to}/quantity/{quantity}")
     public CurrencyConversion calculateCurrencyConversion(
             @PathVariable String from,
             @PathVariable String to,
@@ -47,7 +46,7 @@ public class CurrencyConversionController {
 
 
 
-    @GetMapping("/feign/from/{from}/to/{to}/quantity/{quantity}")
+    @GetMapping("/currency-conversion-feign/from/{from}/to/{to}/quantity/{quantity}")
     public CurrencyConversion calculateCurrencyConversionFeign(
             @PathVariable String from,
             @PathVariable String to,
