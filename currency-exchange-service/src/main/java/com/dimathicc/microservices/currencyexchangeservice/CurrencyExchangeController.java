@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @RequestMapping("/currency-exchange")
 public class CurrencyExchangeController {
 
-    private Environment environment;
+    private final Environment environment;
     private final CurrencyExchangeRepository repository;
 
     public CurrencyExchangeController(Environment environment, CurrencyExchangeRepository repository) {
