@@ -14,8 +14,11 @@ import java.util.Map;
 public class CurrencyConversionController {
 
     private final CurrencyExchangeProxy proxy;
-    public CurrencyConversionController(CurrencyExchangeProxy proxy) {
+    private final RestTemplate restTemplate;
+
+    public CurrencyConversionController(CurrencyExchangeProxy proxy, RestTemplate restTemplate) {
         this.proxy = proxy;
+        this.restTemplate = restTemplate;
     }
 
     @GetMapping("/currency-conversion/from/{from}/to/{to}/quantity/{quantity}")
@@ -29,7 +32,7 @@ public class CurrencyConversionController {
         uriVariables.put("from",from);
         uriVariables.put("to",to);
 
-        ResponseEntity<CurrencyConversion> responseEntity = new RestTemplate().getForEntity
+        ResponseEntity<CurrencyConversion> responseEntity = restTemplate.getForEntity
                 ("http://localhost:8000/currency-exchange/from/{from}/to/{to}",
                         CurrencyConversion.class, uriVariables);
 
