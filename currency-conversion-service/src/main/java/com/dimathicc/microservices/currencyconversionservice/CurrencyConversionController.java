@@ -32,6 +32,7 @@ public class CurrencyConversionController {
         uriVariables.put("from",from);
         uriVariables.put("to",to);
 
+        // TODO: not working through docker-compose, because of localhost
         ResponseEntity<CurrencyConversion> responseEntity = restTemplate.getForEntity
                 ("http://localhost:8000/currency-exchange/from/{from}/to/{to}",
                         CurrencyConversion.class, uriVariables);
